@@ -80,7 +80,7 @@ async def telegram_webhook(request: Request):
     #aibot.logs.append(":update_ends_here:")
     #aibot.logs.append(f"updates size: {updates_len}")
     #await 
-    aibot.tapp.process_update(update_in)
+    await aibot.tapp.process_update(update_in)
     #asyncio.create_task((aibot.tapp.process_update(update_in)))
     #handle_update(update)
     return {"status": "ok"}
