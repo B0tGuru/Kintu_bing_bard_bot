@@ -47,7 +47,8 @@ async def processService(update,last_update,context):
     chatid = update.message.chat_id
     #print(f"processing service: {txt}")
     #asyncio.create_task(bardbot.bardChat(txt))
-    bard_reply = await bardbot.bardChat(txt)
+    bard_reply = await bardbot.bingChat(txt)
+    #bardChat(txt)
     print(bard_reply)
     #await update.message.reply_text(bard_reply)
     await context.bot.edit_message_text(chat_id=chatid,message_id = last_update.message_id,text=bard_reply)
