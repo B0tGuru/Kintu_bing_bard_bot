@@ -216,8 +216,8 @@ async def main(web_url):
     #update = Update.de_json(json.loads('{"update_id":12345}'), tapp.bot)
     #print(update)
     logger.info(f"using web hook {webhook_url}")
-    await abot.deleteWebhook()
-    #await abot.set_webhook(webhook_url)
+    #await abot.deleteWebhook()
+    await abot.set_webhook(webhook_url)
     
     #update_in = await abot.get_updates(limit=100)
     #updates_len = len(update_in)
