@@ -89,8 +89,8 @@ async def telegram_webhook(request: Request):
     return {"status": "ok"}
 
 def startProcess(request_in):
-    active_loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(active_loop)
+    active_loop = asyncio.get_running_loop()
+    #asyncio.set_event_loop(active_loop)
     active_loop.run_until_complete(aibot.tapp.process_update(request_in))
     active_loop.close()
     print("starting process")
