@@ -82,12 +82,14 @@ async def telegram_webhook(request: Request):
     #aibot.logs.append(f"updates size: {updates_len}")
     #await 
     #await aibot.tapp.process_update(update_in)
-    usr_req = threading.Thread(target=aibot.tapp.process_update, args=(update_in,))
+    usr_req = threading.Thread(target= await aibot.tapp.process_update, args=(update_in,))
     usr_req.start()
     #asyncio.create_task((aibot.tapp.process_update(update_in)))
     #handle_update(update)
     return {"status": "ok"}
 
+async def startProcess(request_in):
+    print("starting process")
 #asyncio.set_event_loop(loop)
 
 #import uvicorn
