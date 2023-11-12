@@ -71,6 +71,7 @@ async def telegram_webhook(request: Request):
     logging.error("data here")
     logger.info("obtained some data")
     json_req = await request.json()
+    print("request clear")
     #aibot.logs.append(f"gotten data {json_req}")
     update_in = Update.de_json(json_req, aibot.tapp.bot)
     #update_in = await abot.get_updates(limit=100)
@@ -80,7 +81,9 @@ async def telegram_webhook(request: Request):
     #aibot.logs.append(":update_ends_here:")
     #aibot.logs.append(f"updates size: {updates_len}")
     #await 
-    await aibot.tapp.process_update(update_in)
+    #await aibot.tapp.process_update(update_in)
+    usr_req = threading.Thread(target=aibot.tapp.process_update, args=(update_in,))
+    usr_req.start()
     #asyncio.create_task((aibot.tapp.process_update(update_in)))
     #handle_update(update)
     return {"status": "ok"}
